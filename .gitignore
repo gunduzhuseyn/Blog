@@ -12,3 +12,4 @@ env/
 #Django related files
 __pycache__/
 db.sqlite3
+migrations
