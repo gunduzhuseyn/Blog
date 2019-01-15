@@ -5,3 +5,10 @@
 
 #Local files
 local/
+
+#environment files
+env/
+
+#Django related files
+__pycache__/
+db.sqlite3
