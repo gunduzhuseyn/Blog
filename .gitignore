@@ -1,0 +1,7 @@
+#file: .gitignore
+
+#IDE Files
+.idea/
+
+#Local files
+local/
