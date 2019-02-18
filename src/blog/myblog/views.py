@@ -9,10 +9,9 @@ class HomeView(ListView):
     template_name = 'myblog/index.html'
     context_object_name = 'posts'
     paginate_by = 20
-    ordering = ['published_date']
 
     def get_queryset(self):
-        return Post.objects.filter(is_published=True)
+        return Post.objects.filter(is_published=True).order_by('-date_published')
 
 
 class PostDetailView(DetailView):
