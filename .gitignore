@@ -6,6 +6,9 @@
 #Local files
 local/
 
+#media files
+media/
+
 #environment files
 env/
 
