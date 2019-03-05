@@ -4,10 +4,11 @@
     {% if post.is_published or user.is_superuser %}
         <!-- Page Header -->
         <!-- Set your background image for this header on the line below. -->
-        <header class="intro-header" style="background-image: url('{{ post.header_image.url }}')">
+        <header class="masthead" style="background-image: url('{{ post.header_image.url }}')">
+            <div class="overlay"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="post-heading">
                             <h1>{{ post.title }}</h1>
                             <h2 class="subheading">{{ post.subtitle }}</h2>
@@ -22,7 +23,7 @@
         <article>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="col-lg-8 col-md-10 mx-auto">
                         {{ post.body }}
                     </div>
                 </div>
@@ -31,10 +32,11 @@
     {% else %}
         <!-- Page Header -->
         <!-- Set your background image for this header on the line below. -->
-        <header class="intro-header" style="background-image: url('/static/img/post-bg.jpg')">
+        <header class="masthead" style="background-image: url('/static/img/post-bg.jpg')">
+            <div class="overlay"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="post-heading">
                             <h1>This post is coming soon!</h1>
                         </div>
