@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from django.views.generic import TemplateView
 from .views import HomeView, PostDetailView, ContactFormView, ContactSuccessView
 
@@ -9,4 +9,5 @@ urlpatterns = [
     re_path('^category/(?P<category_name>[-\w]+)/$', HomeView.as_view(), name='home_with_category_url'),
     path('contact/', ContactFormView.as_view(), name='contact_url'),
     path('contact/success/', ContactSuccessView.as_view(), name='contact_success_url'),
+    path('captcha/', include('captcha.urls')),
 ]
