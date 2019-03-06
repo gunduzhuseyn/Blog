@@ -3,6 +3,7 @@
 
 from django.db import models
 from django.urls import reverse
+from martor.models import MartorField
 
 import datetime
 import os
@@ -35,7 +36,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100, default='')
     subtitle = models.CharField(max_length=100, default='')
-    body = models.TextField(default='')
+    body = MartorField()
     date_created = models.DateField(default=datetime.date.today)
     date_published = models.DateField(default=datetime.date.today)
     is_published = models.BooleanField(default=False)

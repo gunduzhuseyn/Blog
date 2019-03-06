@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myblog.urls')),
+    path('captcha/', include('captcha.urls')),
+    path('martor/', include('martor.urls')),
 ]
 
 if settings.DEBUG:
