@@ -1,9 +1,12 @@
+from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import FormView
 
 from django.shortcuts import get_object_or_404
 
 from .models import Post, Category
+from .forms import ContactForm
 
 
 class HomeView(ListView):
@@ -34,3 +37,17 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'myblog/post_detail.html'
     context_object_name = 'post'
+
+
+class ContactFormView(FormView):
+    template_name = 'myblog/contact.html'
+    form_class = ContactForm
+    success_url = 'success'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+class ContactSuccessView(TemplateView):
+    template_name = 'myblog/contact_success.html'
