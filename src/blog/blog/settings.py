@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pygments',
     'markdownx',
     'captcha',
     'myblog',
@@ -132,5 +133,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
-    'markdown.extensions.extra'
+    'markdown.extensions.extra',
+    'markdown.extensions.codehilite'
 ]
