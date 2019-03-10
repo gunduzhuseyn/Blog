@@ -134,5 +134,6 @@ MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
     'markdown.extensions.extra',
-    'markdown.extensions.codehilite'
+    'markdown.extensions.codehilite',
+    'markdown.extensions.mdx_math'
 ]

@@ -30,7 +30,8 @@ class Category(models.Model):
         if getattr(self, 'header_image_changed', True):
             category = Category.objects.filter(id=self.id)
             if category and category[0].header_image:
-                os.remove(category[0].header_image.path)
+                pass
+                # os.remove(category[0].header_image.path)
         super().save(*args, **kwargs)
 
 
@@ -51,7 +52,8 @@ class Post(models.Model):
         if getattr(self, 'header_image_changed', True):
             post = Post.objects.filter(id=self.id)
             if post and post[0].header_image:
-                os.remove(post[0].header_image.path)
+                pass
+                # os.remove(post[0].header_image.path)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
