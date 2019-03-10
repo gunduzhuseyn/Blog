@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myblog.urls')),
     path('captcha/', include('captcha.urls')),
-    path('martor/', include('martor.urls')),
+    path('markdownx/', include('markdownx.urls')),
 ]
 
 if settings.DEBUG:

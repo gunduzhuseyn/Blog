@@ -24,8 +24,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
-                        {% load martortags %}
-                        {{ post.body|safe_markdown }}
+                        {{ post.formatted_markdown|safe }}
                     </div>
                 </div>
             </div>
