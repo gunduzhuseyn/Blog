@@ -6,6 +6,7 @@ from django.urls import reverse
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from django.dispatch import receiver
+from django.utils.text import slugify
 
 import datetime
 import os
@@ -31,6 +32,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100, default='')
     subtitle = models.CharField(max_length=100, default='')
+    slug = models.SlugField(unique=True, blank=True)
     body = MarkdownxField()
     date_created = models.DateField(default=datetime.date.today)
     date_published = models.DateField(default=datetime.date.today)
@@ -42,11 +44,31 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post_detail_url', kwargs={'pk': self.id})
+        return reverse('post_detail_url', kwargs={'slug': self.slug})
 
     @property
     def formatted_markdown(self):
         return markdownify(self.body)
+
+
+def create_unique_slug(instance, new_slug=None):
+    if new_slug is not None:
+        slug = new_slug
+    else:
+        slug = slugify(instance.title)
+
+    qs = Post.objects.filter(slug=slug).order_by('-id')
+    if qs.exists():
+        new_slug = '{}-{}'.format(slug, qs.first().id)
+        return create_unique_slug(instance, new_slug=new_slug)
+    return slug
+
+
+@receiver(models.signals.pre_save, sender=Post)
+def add_slug_to_post(sender, instance, **kwargs):
+    if not instance.slug:
+        instance.slug = create_unique_slug(instance)
+
 
 
 class Contact(models.Model):
