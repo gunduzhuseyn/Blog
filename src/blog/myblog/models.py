@@ -5,6 +5,7 @@ from django.db import models
 from django.urls import reverse
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
+from django.dispatch import receiver
 
 import datetime
 import os
@@ -26,14 +27,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
-        if getattr(self, 'header_image_changed', True):
-            category = Category.objects.filter(id=self.id)
-            if category and category[0].header_image:
-                pass
-                # os.remove(category[0].header_image.path)
-        super().save(*args, **kwargs)
-
 
 class Post(models.Model):
     title = models.CharField(max_length=100, default='')
@@ -47,14 +40,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-    
-    def save(self, *args, **kwargs):
-        if getattr(self, 'header_image_changed', True):
-            post = Post.objects.filter(id=self.id)
-            if post and post[0].header_image:
-                pass
-                # os.remove(post[0].header_image.path)
-        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('post_detail_url', kwargs={'pk': self.id})
@@ -72,3 +57,30 @@ class Contact(models.Model):
 
     def __str__(self):
         return str(self.name) + "\t" + str(self.email) + "\t" + str(self.time)
+
+
+# Below code has been taken from the following django snippet:
+# https://djangosnippets.org/snippets/10638/
+@receiver(models.signals.pre_save, sender=Post)
+@receiver(models.signals.pre_save, sender=Category)
+def auto_delete_image_on_change(sender, instance, **kwargs):
+    if not instance.pk:
+        return False
+
+    try:
+        old_image = sender.objects.get(pk=instance.pk).header_image
+    except sender.DoesNotExist:
+        return False
+
+    new_image = instance.header_image
+    if not old_image == new_image:
+        if os.path.isfile(old_image.path):
+            os.remove(instance.header_image.path)
+
+
+@receiver(models.signals.post_delete, sender=Post)
+@receiver(models.signals.post_delete, sender=Category)
+def auto_delete_image_on_delete(sender, instance, **kwargs):
+    if instance.header_image:
+        if os.path.isfile(instance.header_image.path):
+            os.remove(instance.header_image.path)
