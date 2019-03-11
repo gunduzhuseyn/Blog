@@ -137,3 +137,9 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
     'markdown.extensions.codehilite',
     'markdown.extensions.mdx_math'
 ]
+
+MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
+    'codehilite': {
+        'linenums': True
+    },
+}

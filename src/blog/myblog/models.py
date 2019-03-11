@@ -70,7 +70,6 @@ def add_slug_to_post(sender, instance, **kwargs):
         instance.slug = create_unique_slug(instance)
 
 
-
 class Contact(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
