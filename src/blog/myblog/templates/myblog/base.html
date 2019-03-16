@@ -4,10 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Personal Blog">
+    <meta name="author" content="Gunduz Huseyn">
 
-    <title>Clean Blog - About</title>
+    <link rel="icon" href="/static/img/favicon.jpg">
+
+    <title>Gunduz Huseyn</title>
 
     {% load staticfiles %}
     <!-- Bootstrap Core CSS -->
@@ -15,13 +17,20 @@
 
     <!-- Theme CSS -->
     <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/colorful.css' %}" rel="stylesheet">
+{#    <link href="{% static 'css/colorful.css' %}" rel="stylesheet">#}
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+
+    <style>
+        .post-preview > .post-meta > a {
+          text-decoration: none;
+          color: #212529;
+        }
+    </style>
 {#    <style>#}
 {#        pre{#}
 {#            background-color: #f5f5f5;#}
