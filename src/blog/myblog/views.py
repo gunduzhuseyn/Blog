@@ -28,7 +28,7 @@ class HomeView(ListView):
         category_name = self.kwargs.get('category_name')
         if category_name:
             category = get_object_or_404(Category, name=category_name)
-            return Post.objects.filter(categories=category).order_by('-date_published')
+            return Post.objects.filter(categories=category, is_published=True).order_by('-date_published')
 
         return Post.objects.filter(is_published=True).order_by('-date_published')
 
