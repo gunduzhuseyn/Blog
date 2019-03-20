@@ -13,7 +13,7 @@ class HomeView(ListView):
     model = Post
     template_name = 'myblog/index.html'
     context_object_name = 'posts'
-    paginate_by = 20
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
