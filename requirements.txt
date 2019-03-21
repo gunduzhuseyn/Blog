@@ -2,4 +2,10 @@ django==2.1.7
 pillow==5.4.1
 psycopg2-binary==2.7.6.1
 pytz==2018.9
-django-simple-captcha
+django-simple-captcha==0.5.10
+django-markdownx==2.0.28
+Markdown==3.0.1
+Pygments==2.3.1
+python-markdown-math==0.6
+requests==2.21.0
+six==1.12.0
