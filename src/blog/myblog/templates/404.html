@@ -1,0 +1,7 @@
+{% extends 'myblog/base.html' %}
+
+{% block content %}
+
+    {% include 'myblog/error_page.html' with error_no='404' error_title='404 Not Found!' error_message='Sorry the page you are looking for is not here! It probably is somewhere else in the internet, keep looking!' %}
+
+{% endblock %}
