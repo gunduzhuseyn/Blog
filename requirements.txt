@@ -4,7 +4,7 @@ psycopg2-binary==2.7.6.1
 pytz==2018.9
 django-simple-captcha==0.5.10
 django-markdownx==2.0.28
-Markdown==3.0.1
+Markdown==3.1
 Pygments==2.3.1
 python-markdown-math==0.6
 requests==2.21.0
