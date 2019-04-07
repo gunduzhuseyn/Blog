@@ -4,7 +4,7 @@
 
 <!-- Page Header -->
 {% if category %}
-    {% include 'myblog/page_header.html' with header_img_url=category.header_image.url header_title="Gunduz Huseyn" header_subtitle=category.tag_line %}
+    {% include 'myblog/page_header.html' with header_img_url=category.header_image.url header_title=category.title header_subtitle=category.tag_line %}
 {% else %}
     {% include 'myblog/page_header.html' with header_img_url="/static/img/home-bg.jpg" header_title="Gunduz Huseyn" header_subtitle="Welcome To My Corner Of The Internet!" %}
 {% endif %}

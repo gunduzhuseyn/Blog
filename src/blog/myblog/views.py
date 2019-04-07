@@ -17,9 +17,9 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        category_name = self.kwargs.get('category_name')
-        if category_name:
-            category = get_object_or_404(Category, name=category_name)
+        slug = self.kwargs.get('slug')
+        if slug:
+            category = get_object_or_404(Category, slug=slug)
             context['category'] = category
 
         return context

@@ -17,16 +17,17 @@ def post_header_image_path(instance, filename):
 
 
 def category_header_image_path(instance, filename):
-    return 'categories/{0}/header_image.jpg'.format(instance.name)
+    return 'categories/{0}/header_image.jpg'.format(instance.id)
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50, unique=True, default='')
+    title = models.CharField(max_length=50, unique=True, default='')
+    slug = models.SlugField(unique=True, blank=True)
     tag_line = models.CharField(max_length=300, null=True, default='')
     header_image = models.ImageField(upload_to=category_header_image_path, null=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Post(models.Model):
@@ -51,23 +52,33 @@ class Post(models.Model):
         return markdownify(self.body)
 
 
-def create_unique_slug(instance, new_slug=None):
+def create_unique_slug(instance, class_name, new_slug=None):
     if new_slug is not None:
         slug = new_slug
     else:
         slug = slugify(instance.title)
 
-    qs = Post.objects.filter(slug=slug).order_by('-id')
+    if class_name == 'Post':
+        qs = Post.objects.filter(slug=slug).order_by('-id')
+    else:
+        qs = Category.objects.filter(slug=slug).order_by('-id')
+
     if qs.exists():
         new_slug = '{}-{}'.format(slug, qs.first().id)
-        return create_unique_slug(instance, new_slug=new_slug)
+        return create_unique_slug(instance, class_name, new_slug=new_slug)
     return slug
 
 
 @receiver(models.signals.pre_save, sender=Post)
 def add_slug_to_post(sender, instance, **kwargs):
     if not instance.slug:
-        instance.slug = create_unique_slug(instance)
+        instance.slug = create_unique_slug(instance, 'Post')
+
+
+@receiver(models.signals.pre_save, sender=Category)
+def add_slug_to_post(sender, instance, **kwargs):
+    if not instance.slug:
+        instance.slug = create_unique_slug(instance, 'Category')
 
 
 class Contact(models.Model):
