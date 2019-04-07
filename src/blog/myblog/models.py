@@ -13,11 +13,11 @@ import os
 
 
 def post_header_image_path(instance, filename):
-    return 'posts/{0}/header_image.jpg'.format(instance.id)
+    return 'posts/{0}/header_image.jpg'.format(instance.slug)
 
 
 def category_header_image_path(instance, filename):
-    return 'categories/{0}/header_image.jpg'.format(instance.id)
+    return 'categories/{0}/header_image.jpg'.format(instance.slug)
 
 
 class Category(models.Model):
@@ -76,7 +76,7 @@ def add_slug_to_post(sender, instance, **kwargs):
 
 
 @receiver(models.signals.pre_save, sender=Category)
-def add_slug_to_post(sender, instance, **kwargs):
+def add_slug_to_category(sender, instance, **kwargs):
     if not instance.slug:
         instance.slug = create_unique_slug(instance, 'Category')
 
