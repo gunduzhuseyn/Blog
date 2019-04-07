@@ -1,5 +1,7 @@
 from .base import *
 
+DEBUG = False
+
 ALLOWED_HOSTS = ['www.gunduzhuseyn.com', 'gunduzhuseyn.com']
 
 DATABASES = {
