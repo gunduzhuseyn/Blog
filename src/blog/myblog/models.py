@@ -31,9 +31,9 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=100, default='')
-    subtitle = models.CharField(max_length=100, default='')
-    slug = models.SlugField(unique=True, blank=True)
+    title = models.CharField(max_length=150, default='')
+    subtitle = models.CharField(max_length=150, default='')
+    slug = models.SlugField(unique=True, blank=True, max_length=150)
     body = MarkdownxField()
     date_created = models.DateField(default=datetime.date.today)
     date_published = models.DateField(default=datetime.date.today)
