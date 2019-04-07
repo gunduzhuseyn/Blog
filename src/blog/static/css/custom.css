@@ -1,0 +1,18 @@
+/*Code line numbering*/
+.linenos{
+    padding: 5px 24px 5px 5px;
+}
+
+
+/*Making code block responsive*/
+.codehilitetable{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/*Links inside navbar*/
+.nav-item > a{
+    text-decoration: none;
+}
