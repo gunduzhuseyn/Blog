@@ -30,8 +30,8 @@
                             Categories:
                         {% endif %}
                         {% for category in post.categories.all %}
-                            <a href="{% url 'home_with_category_url' category_name=category.name %}">
-                                {{category.name}}
+                            <a href="{% url 'home_with_category_url' slug=category.slug %}">
+                                {{category.title}}
                             </a>
                         {% endfor %}
                     </p>
