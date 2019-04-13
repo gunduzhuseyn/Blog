@@ -1,3 +1,5 @@
+{% extends 'myblog/base.html' %}
+
 {% block content %}
 
     {% include 'myblog/error_page.html' with error_image='/static/img/400.jpg' error_title='400 Bad Request!' error_message="Seems you have made a bad request. I do not know how to serve you in this case." %}
