@@ -114,6 +114,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+MARKDOWNX_IMAGE_MAX_SIZE = {'size': (900, 900), 'quality': 100}
+
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
