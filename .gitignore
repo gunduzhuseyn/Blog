@@ -12,9 +12,6 @@ media/
 #environment files
 env/
 
-# static files
-./static/
-
 #Django related files
 __pycache__/
 db.sqlite3

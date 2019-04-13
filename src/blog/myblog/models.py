@@ -107,7 +107,7 @@ def auto_delete_image_on_change(sender, instance, **kwargs):
     new_image = instance.header_image
     if not old_image == new_image:
         if os.path.isfile(old_image.path):
-            os.remove(instance.header_image.path)
+            os.remove(old_image.path)
 
 
 @receiver(models.signals.post_delete, sender=Post)
