@@ -1,4 +1,4 @@
-# Creating A Personal Blog Using Django Framework
+# Creating A Personal Blog Part 1: Setting Up The Environment
 
 ### Creating A Personal Blog Using Django, Nginx, And Google Cloud
 
