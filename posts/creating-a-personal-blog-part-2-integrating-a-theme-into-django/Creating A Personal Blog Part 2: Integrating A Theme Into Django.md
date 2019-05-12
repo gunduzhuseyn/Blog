@@ -362,7 +362,42 @@ into _navbar.html_:
 </nav>
 ```
 
-Similarly cut the Footer section of the code and paste it in _footer.html_ file:
+Another cool magic we can make use of is using dynamic urls for the `href` values in links, instead of hard coded ones.
+This way if we change url patterns in _urls.py_ files, we will not need to update corresponding html elements. To 
+achieve this, simply add `{% url 'url_name' %}` inside the `href` tag. `url_name` should correspond to the name of the
+url we defined in _urls.py_ file. For example, our new navigation links will look like this:
+
+```
+#!html
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index_url' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about_url' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'post_url' %}">Sample Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact_url' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+```
+
+Similar to the navigation part of the code, cut the Footer section of the code and paste it in _footer.html_ file:
 
 ```
 #!html
