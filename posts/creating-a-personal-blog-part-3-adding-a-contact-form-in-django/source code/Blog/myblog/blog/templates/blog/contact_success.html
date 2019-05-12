@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+{% include 'blog/page_header.html' with header_img_url='/static/img/contact-bg.jpg' header_title='Contact Me' header_subtitle='Have questions? I have answers.' %}
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p>Your message has been saved!</p>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+{% endblock %}
