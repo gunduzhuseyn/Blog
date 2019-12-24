@@ -1,4 +1,4 @@
-django==2.1.7
+django==2.1.11
 pillow==5.4.1
 psycopg2-binary==2.7.6.1
 pytz==2018.9
