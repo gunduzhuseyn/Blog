@@ -9,6 +9,9 @@ local/
 #media files
 media/
 
+#static files collected by the collectstatic
+/static/
+
 #environment files
 env/
 
