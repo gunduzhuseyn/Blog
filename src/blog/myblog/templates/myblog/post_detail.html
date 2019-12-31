@@ -46,7 +46,7 @@
             </div>
         </article>
 
-{#        {% include 'myblog/post_comments.html' %}#}
+        {% include 'myblog/post_comments.html' with url=post.slug %}
     {% else %}
         <!-- Page Header -->
         <!-- Set your background image for this header on the line below. -->
