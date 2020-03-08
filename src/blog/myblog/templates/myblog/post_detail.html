@@ -43,10 +43,16 @@
                         {{ post.formatted_markdown|safe }}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        {% include 'myblog/post_comments.html' with url=post.slug %}
+                    </div>
+                </div>
             </div>
         </article>
 
-{#        {% include 'myblog/post_comments.html' %}#}
+
+
     {% else %}
         <!-- Page Header -->
         <!-- Set your background image for this header on the line below. -->

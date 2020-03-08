@@ -1,3 +1,4 @@
-{% load disqus_tags %}
-{% disqus_dev %}
-{% disqus_show_comments %}
+<div id="disqus_thread"></div>
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/disqus_comments.js' %}"></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>

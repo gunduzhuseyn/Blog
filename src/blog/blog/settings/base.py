@@ -50,7 +50,41 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
+
+# CSP Variables
+CSP_DEFAULT_SRC = ("'self'",
+                   "https://c.disquscdn.com/next/embed/",
+                   "https://disqus.com/next/",
+                   "https://disqus.com/embed/comments/",
+                   "https://disqus.com/home/preload/",
+                   "https://links.services.disqus.com/api/",
+                   )
+
+CSP_STYLE_SRC = ("'self'", "'unsafe-inline'",
+                 "https://fonts.googleapis.com/",
+                 "https://c.disquscdn.com/next/embed/styles/",
+                 )
+
+CSP_SCRIPT_SRC = ("'self'",
+                  "'unsafe-inline'",
+                  "'unsafe-eval'",
+                  "https://polyfill.io/v3/",
+                  "https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/",
+                  "https://gunduzhuseyn.disqus.com/embed.js",
+                  "https://c.disquscdn.com/next/embed/",
+                  )
+CSP_IMG_SRC = ("'self'",
+               "https://referrer.disqus.com/juggler/",
+               "https://c.disquscdn.com/next/embed/assets/img/",
+               "http://cdn.viglink.com/images/",
+               "http://links.services.disqus.com/api/",
+               )
+CSP_FONT_SRC = ("'self'",
+                "https://fonts.gstatic.com/",
+                "https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/output/chtml/fonts/woff-v2/",
+                )
 
 ROOT_URLCONF = 'blog.urls'
 
