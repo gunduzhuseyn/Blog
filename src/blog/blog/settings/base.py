@@ -58,10 +58,13 @@ CSP_DEFAULT_SRC = ("'self'",
                    "https://c.disquscdn.com/next/embed/",
                    "https://disqus.com/next/",
                    "https://disqus.com/embed/comments/",
+                   "https://disqus.com/home/preload/",
+                   "https://links.services.disqus.com/api/",
                    )
 
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'",
-                 "https://fonts.googleapis.com/"
+                 "https://fonts.googleapis.com/",
+                 "https://c.disquscdn.com/next/embed/styles/",
                  )
 
 CSP_SCRIPT_SRC = ("'self'",
@@ -70,10 +73,13 @@ CSP_SCRIPT_SRC = ("'self'",
                   "https://polyfill.io/v3/",
                   "https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/",
                   "https://gunduzhuseyn.disqus.com/embed.js",
+                  "https://c.disquscdn.com/next/embed/",
                   )
 CSP_IMG_SRC = ("'self'",
                "https://referrer.disqus.com/juggler/",
                "https://c.disquscdn.com/next/embed/assets/img/",
+               "http://cdn.viglink.com/images/",
+               "http://links.services.disqus.com/api/",
                )
 CSP_FONT_SRC = ("'self'",
                 "https://fonts.gstatic.com/",
