@@ -25,23 +25,6 @@
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-
-    <style>
-        .nav-item > a{
-          text-decoration: none;
-        }
-    </style>
-{#    <style>#}
-{#        pre{#}
-{#            background-color: #f5f5f5;#}
-{#            border: 1px solid #ebe9e9;#}
-{#            margin: 20px 0;#}
-{#            overflow: auto;#}
-{#            padding: 0 20px;#}
-{#            word-wrap: break-word;#}
-{#        }#}
-{#    </style>#}
-
 </head>
 
 <body>
@@ -65,7 +48,9 @@
     <!-- Theme JavaScript -->
     <script src="{% static 'js/clean-blog.min.js' %}"></script>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+    <!-- Mathjax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js"></script>
 
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
