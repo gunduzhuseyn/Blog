@@ -69,7 +69,7 @@ CSP_SCRIPT_SRC = ("'self'",
                   "'unsafe-eval'",
                   "https://polyfill.io/v3/",
                   "https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/",
-                  "https://example.disqus.com/embed.js",
+                  "https://gunduzhuseyn.disqus.com/embed.js",
                   )
 CSP_IMG_SRC = ("'self'",
                "https://referrer.disqus.com/juggler/",
