@@ -98,7 +98,7 @@ you want to paste into a shell editor, remember to use `ctrl+shift+v` in command
 `esc` and then type `:wq` to write and quit the file. If stuck, remember you can always find help online about vim. Or
 try a different command line text editor, such as nano to edit the files.
 
-```
+```bash
 # Virtualevnwrapper env variables
 export WORKON_HOME=$HOME/Desktop/Envs
 source /usr/bin/virtualenvwrapper.sh
@@ -148,7 +148,7 @@ tutorial to learn django, and will not use this code in deployment, then version
 Now create a directory you want to keep your project in, and go to that directory in the command line. 
 For example, if I wanted to create a 'Blog' folder under 'Desktop', I would run the following commands in order.
 
-```
+```bash
 cd ~/Desktop
 mkdir Blog
 cd Blog
@@ -161,7 +161,7 @@ Now you should be inside the _Blog_ folder. Then run the following command to cr
 This will create a folder called _myblog_, and inside should be a manage.py file and myblog folder. Change directory into
 the newly created folder, where you will have the manage.py. And execute the manage.py with runserver keyword.
 
-```
+```bash
 cd myblog
 ./manage.py runserver
 ```
