@@ -11,7 +11,7 @@ this post on. Before I continue, let me answer a few questions first.
 Why would you want to develop your own personal blog? Why would you want to have a personal blog anyway? You may wish so
 for many reasons. Sharing your ideas, and knowledge, poetry that you enjoy or write yourself, 
 places you travel to, things you cook, and etc. Well I have to admit that there are ton of social media platforms, where 
-you can do all of the above, and share it with your friends easily. However, having a personal blog is ... It is just 
+you can do all of the above, and share it with your friends easily. However, having a personal blog is ... Well, it is just 
 personal. 
 
 Let me put it in this way. Using a social media platform is similar to living in a building with lots of apartments inside.
@@ -40,13 +40,13 @@ guide for your own situation. Let's begin our journey.
 ## What You Should Expect
 
 In the end of this series, you should have a webpage very similar to the one you are viewing currently. We will use
-Django (version 2.1.7), and Python (3.6) to develop the blog locally. Then we will use Nginx + Gunicorn to deploy the 
+Django (version 3.0.4), and Python (3.8) to develop the blog locally. Then we will use Nginx + Gunicorn to deploy the 
 blog on a Google Cloud Instance. We will get to all of these in time. However, lets first setup our environment to start
 the local development.
 
 ## Setting Up The Environment
 
-I will be using Python 3.6 and Django 2.1.7, and will be developing on Linux platform (Arch Linux 5.0.1). 
+I will be using Python 3.8 and Django 3.0.4, and will be developing on Linux platform (Arch Linux 5.5.7). 
 Any linux environment should do for this series. I expect that you are able to adjust this tutorial for your needs, 
 if you are using Windows.
 
@@ -54,21 +54,21 @@ First step is to determine whether you have python 3 installed on your system. R
 
 `python3 --version`
 
-If the output is **`Python 3.6.x`** then you are good to go. If not you need to install python 3 to your system. You can
+If the output is **`Python 3.8.x`** then you are good to go. If not you need to install python 3 to your system. You can
 follow this [guide](https://docs.python-guide.org/starting/install3/linux/) for doing so on Ubuntu. 
 Also feel free to google it for the operating system you are working on. In the end make sure you have Python 3.6 
-(3.7 is also fine), by running `python3 --version` and getting the **`Python 3.6`** output.  
+(3.6.x or 3.7.x is also fine), by running `python3 --version` and getting the **`Python 3.8.x`** output.  
 
 Now similarly we need to install pip3. Pip is a package manager for python. It makes installing, and maintaining python
 packages extremely easy. So go ahead and try `pip3 --version` on the command line. If you get an output with 
-`(python 3.6)` in the end, you are good to go. Otherwise you need to install pip3 to your system as well. Again here is a 
+`(python 3.8)` in the end, you are good to go. Otherwise you need to install pip3 to your system as well. Again here is a 
 [guide](https://linuxize.com/post/how-to-install-pip-on-ubuntu-18.04/) showing how to do so on Ubuntu.
 
 ### Virtualenv and Virtualenvwrapper
 Virtualenv is a tool to create virtual environments for python. If you run `pip3 list` you will see all of the packages
 installed in your system. When starting a new python project, it is highly recommended to create virtual environments,
 so that you can install packages that are specific to your project, which might be even different versions of the 
-packages installed in your system. In this way, your packages for your project can be kept separate from each other.
+packages installed in your system. In this way, your packages for your projects can be kept separate from each other.
 Virtualenv Wrapper is a tool to easily create and manage virtual environments. We need to install both of these packages
 using pip. So go ahead and install [virtualenv](https://pypi.org/project/virtualenv/) and 
 [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/index.html)
@@ -125,7 +125,7 @@ the virtual environment, run `workon blog-env`, and you should see (blog-env) in
 that you are inside this virtual environment, every time you are executing python files related to this project.
 
 Just to make sure, check that you have the python3 inside the blog-env as well. The command `python --version`
-should give the `Python 3.6.x` output.
+should give the `Python 3.8.x` output.
 
 Congrats! You have achieved a significant amount of work today, and you deserve a pat on the back. However, before we are
 done with today, I feel like we could do a little bit more. I promise it wont take much.
@@ -135,10 +135,15 @@ done with today, I feel like we could do a little bit more. I promise it wont ta
 Make sure that you are inside the blog-env ( (blog-env) should be visible in your terminal). Then install the 
 Django package to your virtual environment.
 
-`pip install django==2.1.7`
+`pip install django==3.0.4`
 
-Since I am using django version 2.1.7 in this tutorial, and I have no idea what version will be out there when you are
-reading this, for us to be in the same page you should also indicate the django version when installing it.
+Since I am using django version 3.0.4 in this tutorial, and I have no idea what version will be out there when you are
+reading this, for us to be in the same page you should also indicate the django version when installing it. 
+
+Important note:
+In the future, a security vulnerability might be found with django version 3.0.4, and if so you should use the most recent
+version of the django for your project, and update the code and configuration accordingly. If you are simply following this
+tutorial to learn django, and will not use this code in deployment, then version 3.0.4 should be fine.
 
 Now create a directory you want to keep your project in, and go to that directory in the command line. 
 For example, if I wanted to create a 'Blog' folder under 'Desktop', I would run the following commands in order.
@@ -156,7 +161,10 @@ Now you should be inside the _Blog_ folder. Then run the following command to cr
 This will create a folder called _myblog_, and inside should be a manage.py file and myblog folder. Change directory into
 the newly created folder, where you will have the manage.py. And execute the manage.py with runserver keyword.
 
-`./manage.py runserver`
+```
+cd myblog
+./manage.py runserver
+```
 
 Output of the command should be similar to this.
 
