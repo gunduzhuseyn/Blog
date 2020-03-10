@@ -8,7 +8,7 @@
 Hi. Welcome back to our journey of creating our special corner on the internet. I assume you have read and followed the
 [part 1](https://gunduzhuseyn.com/posts/creating-a-personal-blog-part-1-setting-up-the-environment) of this series. If 
 not, please go ahead and read (or skim) it before continuing. In this part, we are going to create our very own simple home 
-page, displaying a simple message, to get comfortable with the ropes of Django framework. Then we are going to
+page, and display a simple message, to get comfortable with the ropes of Django framework. Then we are going to
 download and adopt a webpage theme to our own blog, to make it look prettier and more professional. So let's begin.
 
 
@@ -20,13 +20,15 @@ you are inside the
 _blog-env_ virtual environment we created in the previous part. If you have activated the virtual environment `(blog-env)` should 
 be visible in your command line. If not simply run `workon blog-env`. Now to create a django app called _blog_, run the below command:
 
-`django-admin startapp blog`
+```bash
+django-admin startapp blog
+```
 
 As a result, you should see a folder called _blog_ inside your project's root directory. Inside that folder you should have
 python files such as _admin.py_, _models.py_, _views.py_ and etc. Most of our code will be written inside these files. But 
 first lets add our app to the project. To do so, open up the _settings.py_ folder, under _myblog_ folder, which itself is
 under the project root directory. From now on, you can use your favorite IDE (such as Sublime, Pycharm) to edit the 
-source code. Add your app name, which is blog in my case to INSTALLED_APPS list inside the _settings.py_ file. After 
+source code. Add your app name, which is *blog* in my case, to `INSTALLED_APPS` list inside the _settings.py_ file. After 
 doing that part of your _settings.py_ file should look like this: 
 
 ```
@@ -42,7 +44,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Good. Now to serve a page in Django, we need to do the following steps. First, we need to create an html page, which will
+Good. Now to serve a page in Django, we need to do the following steps: First, we need to create an html page, which will
 be shown to the user. Then we need to create a view, that will serve this page, and adjust the dynamic content if needed.
 There are also models, which represent the objects in our webpage that needs to be stored. In our case actual posts that
 we will write and publish will be represented as models (more on this in the next part). Finally, code inside _urls.py_
@@ -50,16 +52,16 @@ links (pun intended) the url patterns in our page to the corresponding views tha
 you are somewhat familiar with this structure in a Django project, or at least are capable to google and figure things out 
 on your own. I will try to be as clear as possible anyway.
 
-So, Django by default, looks for html pages under the _templates_ folder, in order to serve them. So lets create
-_templates_ folder under our _blog_ folder. It is a good practice to create a folder with same name as the app name,
-inside the templates folder. It might seem a little confusing, but bear with me. After creating all the folders, your 
-project directory should look like this:
+So, Django by default, looks for html pages under the _templates_ folder, in order to serve them. Lets go ahead and create
+_templates_ folder under our _blog_ app folder. It is a good practice to create a folder with same name as the app name,
+inside the templates folder we just created. It might seem a little confusing, but for now bear with me. 
+After creating all the folders, your project directory should look like this:
 
 
-![Project Directory Structure](imgs/project%20directory%20structure.png)
+![Project Directory Structure](imgs/project_directory_structure.png)
 
 
-Now, create an html page called _home.html_ inside `/blog/templates/blog/` directory. And paste the following code into this
+Now, create an html page called _home.html_ inside `/blog/templates/blog/` directory. And write the following code in this
 file:
 
 ```
@@ -77,7 +79,7 @@ file:
 ```
 
 At this point, we have our html page ready to be served. In this case it just displays a simple, warm welcome message to our users. Now we 
-need to create a view that will serve this page. To do so, paste the following code inside `/blog/views.py`:
+need to create a view that will serve this page. To do so, write the following code inside `/blog/views.py`:
 
 ```
 #!python
@@ -88,7 +90,7 @@ class HomeView(TemplateView):
     template_name = 'blog/home.html'
 ```
 
-TemplateView is a class provided by django, which simply renders an html page, that is provided in the template_name 
+TemplateView is a class provided by Django, which simply renders an html page, that is provided in the template_name 
 parameter. In the above code, we pass the path (relative to the templates folder) of the html page we just created, to this parameter.
 For the last step, we need to adjust the url settings in our project, so we can show our home page to our users. To do so first 
 edit the `myblog/urls.py` file accordingly:
@@ -106,7 +108,7 @@ urlpatterns = [
 
 Here we are telling Django to look for _urls.py_ file inside our _blog_ app, to match any url that starts with empty string 
 (meaning all urls). If you are confused and want to know more about Django urls, you can check out the official 
-documentation [here](https://docs.djangoproject.com/en/2.2/topics/http/urls/). Since we just told Django to look into
+documentation [here](https://docs.djangoproject.com/en/3.0/topics/http/urls/). Since we just told Django to look into
 _urls.py_ file inside the blog app, we also need to create this file and add the following code inside it:
 
 ```
@@ -121,7 +123,7 @@ urlpatterns = [
 ```
 
 In the above code, we configure Django so that, if `home/` comes after the pattern declared in `myblog/urls.py` (which was empty string,
-so the complete patter becomes : `'' + home/ => home/`), then serve the HomeView view we implemented in _views.py_ file. Now start the 
+so the complete patter becomes : `'' + home/ => home/`), then we serve the HomeView view we implemented in _views.py_ file. Now start the 
 server by running `python manage.py runserver`, from the root of the project. If you followed everything correctly, server
 should start with no problem (with a warning complaining about the unapplied migrations, which you should not worry about
 for now). If you try to go to `http://127.0.0.1:8000` now you should face with the following error screen:
@@ -149,14 +151,15 @@ to make web pages look better, I usually tend to look for free (or paid if I hav
 on the internet, and integrate them into my project. One of such places where we can find free templates is 
 [Start Bootstrap](https://startbootstrap.com/themes/). You can find other templates by googling as well. For my own blog, and 
 for this tutorial I will be using [Clean Blog Theme](https://startbootstrap.com/themes/clean-blog/).
-If you are very comfortable with Django, then feel free to choose another template. However in this case I will just assume 
+If you are very comfortable with Django, then feel free to choose another template. However if this is the case, I will just assume 
 that you are capable to adjust the steps described in this series, into your own situation. Otherwise, you
 should download the same theme for following this series. You can go ahead and choose your own theme (or even develop 
 one) once you are more comfortable with Django.
 
 Go ahead and download the source code for [Clean Blog Theme](https://startbootstrap.com/themes/clean-blog/).
-As I am writing this post, the theme version is 5.0.5. In the future, author may stop maintaining 
-this theme, or alter it significantly. So in order for us to be on the same page, you can download it from my github repo, 
+As I am writing this post, the theme version is 5.0.8. In the future, author may stop maintaining 
+this theme, or alter it significantly. So in order for us to be on the same page, you can also download it from my 
+[github repo](https://github.com/gunduzhuseyn/Blog/tree/posts/posts/creating-a-personal-blog-part-2-integrating-a-theme-into-django/source%20code), 
 where I uploaded the source code for this theme.
 
 Copy 4 html documents (_about.html_, _contact.html_, _index.html_, _post.html_) from the Theme's source code into the 
@@ -165,7 +168,7 @@ create a folder called _static_ under the _blog_ app folder, and copy these fold
 the newly created folder: _css_, _scss_, _img_, _js_, and _vendor_. Now your project directory should look like this:
 
 
-![Project Directory Structure](imgs/project_direcotory_2.png)
+![Project Directory Structure](imgs/project_directory_structure_2.png)
 
 
 At this point, we have the html pages (i.e. templates) we want to render. So lets create views, and url patterns, to serve them 
@@ -196,11 +199,13 @@ Now we are serving all 4 pages, in our blog. To see the result, navigate to `htt
 
 
 Hmm... It seems that nothing incredible has improved in our style. There is just more text, still in plain html style. 
-This is because Django does not handle linking css and javascript files, which are supposed to make our webpage prettier,
-traditionally. So lets focus on making the _index.html_ work for now, and we will apply the same fixes to other pages later. 
+This is because Django does not handle linking css and javascript files traditionally, which are supposed to make our 
+webpage prettier. So lets focus on making the _index.html_ work for now, and we will apply the same fixes to other pages later. 
 
-In order to fix this issue, we need to change the `<link>` and `<script>` tags that link to local files. 
-Simply, we need to add `{% static %}` Jinja tags to the sources. Also we do not need to change those directed towards online files. 
+In order to fix this issue, we need to change the `<link>` and `<script>` html tags that link to local css and javascript files. 
+Simply, we need to add `{% static %}` Jinja tag to the sources. We do not need to change those directed towards online files,
+since they do not 'link' local static files. 
+
 For example here are before and after (we apply changes) versions of these tags:
 
 - Before: 
@@ -217,8 +222,9 @@ For example here are before and after (we apply changes) versions of these tags:
 <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>`
 ```
 
-Also add `{% load staticfiles %}` tag to the beginning of the html file, after the `<title>` html tag, to let Django know it will be 
-loading static files. Here is a partial code from _index.html_ (between the `<head>` tags) showing the changes:
+Also add `{% load static %}` tag to the beginning of the html file, after the `<title>` html tag, to let Django know it will be 
+loading static files. Every time you use this `{% static %}` tag in html, u need to load the tag beforehand as well.
+Here is a partial code from _index.html_ (between the `<head>` tags) showing the changes:
 
 ```
 #!html
@@ -234,7 +240,7 @@ loading static files. Here is a partial code from _index.html_ (between the `<he
 
     <title>Clean Blog - Start Bootstrap Theme</title>
 
-    {% load staticfiles %}
+    {% load static %}
 
     <!-- Bootstrap core CSS -->
     <link href="{%  static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -252,6 +258,7 @@ loading static files. Here is a partial code from _index.html_ (between the `<he
 ...
 ```
 
+Do not forget to apply the same changes to the `<script>` tags at the very bottom of the code.
 After adding these changes to _index.html_, our page now should look like this:
 
 
@@ -271,9 +278,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 First line tells Django to serve the static content under urls starting with `/static/`. Second line tells where to look for
 these static files. Now we need to change the `myblog/urls.py` file as well, in order to enable url patterns looking for
-static content on our site. Remember this is only for serving static files on our development server. For production we 
+static content on our site. Remember this is only for serving static files on our development server, and should not be used for
+deployment servers. For production we 
 will use Nginx, which I will cover when we get to deployment part. If you want to know more about this topic, you can 
-get more information [here](https://docs.djangoproject.com/en/2.2/howto/static-files/).
+get more information [here](https://docs.djangoproject.com/en/3.0/howto/static-files/).
 So change the `myblog/urls.py` file accordingly:
 
 ```
@@ -295,15 +303,17 @@ if settings.DEBUG:
 
 ```
 
-We are ready to serve static files now. All left to do, is to change the image sources in html.
+We are ready to serve static files now. All left to do, is to change the image sources in html, similar to sources in
+html tags.
 Here is an example of before and after versions:
+
 - Before: 
 
-`style="background-image: url('img/post-bg.jpg')`
+`style="background-image: url('img/home-bg.jpg')`
 
 - After: 
 
-`style="background-image: url('/static/img/post-bg.jpg')`
+`style="background-image: url('/static/img/home-bg.jpg')`
 
 Apply this change in the Page Header in _index.html_, and finally our page should look like this:
 
@@ -314,8 +324,8 @@ Apply this change in the Page Header in _index.html_, and finally our page shoul
 Congrats. Now our page looks more like a blog. 
 
 ## Jinja Magic
-Before we go ahead and apply the same changes into our other 3 pages, let me introduce you with some Jinja wizardry, if 
-you are not familiar with it. If you were to go ahead and apply the changes we did for _index.html_, to other pages,
+Before we go ahead and apply the same changes into our other 3 pages, let me introduce you with some Jinja wizardry.
+If you were to go ahead and apply the changes we did for _index.html_, to other pages,
 you would soon realize that you are changing the same css and javascript tags. Overall, you should realize that most of the code
 in these pages are almost identical. Writing and managing redundant code inside the same project, is always a bad sign for a 
 software developer. Using Jinja's extend, and include tags, we can get rid of this redundant code. 
@@ -327,7 +337,7 @@ other pages. Hopefully it will become clearer, with some examples. So lets go ah
 `blog\templates\blog\` directory, and copy the content of _index.html_ into this file.
 
 The code between the `<head>` tags are same for every page in our blog. So it definitely belongs to base.html. Inside 
-`<body>`, the Navigation, Footer, and js scripts do not change from page to page, so they should be inside this file as 
+`<body>`, the Navigation, Footer, and js scripts do not change from page to page either, so they should be inside this file as 
 well. It seems we can create short snippets for the Navigation, and Footer, and then include them in _base.html_. 
 So create _navbar.html_, and _footer.html_ files. Cut the Navigation part of the code from the base.html and paste it 
 into _navbar.html_:
@@ -362,10 +372,12 @@ into _navbar.html_:
 </nav>
 ```
 
-Another cool magic we can make use of is using dynamic urls for the `href` values in links, instead of hard coded ones.
+Now we will be able to use this code in any of the other html pages, by simply calling it with `{% include %}` tag, 
+as we will use this in _base.html_. Another cool magic we can make use of is using dynamic urls for the `href` values in 
+links, instead of hard coded ones.
 This way if we change url patterns in _urls.py_ files, we will not need to update corresponding html elements. To 
 achieve this, simply add `{% url 'url_name' %}` inside the `href` tag. `url_name` should correspond to the name of the
-url we defined in _urls.py_ file. For example, our new navigation links will look like this:
+url we defined in _urls.py_ file. For example, our new navigation links should look like this:
 
 ```
 #!html
@@ -402,6 +414,7 @@ Similar to the navigation part of the code, cut the Footer section of the code a
 ```
 #!html
 <!-- Footer -->
+<hr>
 <footer>
     <div class="container">
         <div class="row">
@@ -585,8 +598,6 @@ _index.html_ and change it as shown below, to extend the base file.
     </div>
 </div>
 
-<hr>
-
 {% endblock %}
 ```
 
@@ -595,20 +606,21 @@ page, you will see that Django has combined all the code together and rendered i
 
 Although refactoring code in this way may look complicated and tedious, it is actually a very well known software engineering practice
 to create "functions" for the redundant code, and call them wherever they are needed. This way, if we need to change anything in navigation 
-(spoiler: we will need to), we can change only the _navbar.html_, and update all other codes with the change.
+(spoiler: we will need to), we can change only the _navbar.html_, and update all other codes with the change. Or by simply
+editing the _base.html_ file, we can add new changes to all other html files that extend from it.
 
 Go ahead, and make other pages (_about.html_, _contact.html_, and _post.html_) extend the _base.html_, removing all the 
 redundant code, and keeping only the code that is specific for the page (Page Header and Main/Post Content). 
-If stuck you can always refer to the code I post at the end of this post.
+If stuck you can always refer to the source code linked at the end of this post.
 
 
 ### Further Magic
 
 Today you have achieved a lot, and you must be feeling proud with yourself. However, before completing today's post, I
-feel like you should learn another Jinja trick. If you were careful, you probably have realized by now that Page Header section
-of the code in all 3 pages (index, contact, about), are very similar, differing in only three parameters: the background image url, title, 
-and subtitle. Turns out, we can create a snippet to include this code, and pass variables for these parameters from the pages
-that includes this snippet.
+feel like you should learn another Jinja trick. Hopefully you have already realized by now that Page Header section
+of the code in all 3 pages (index, contact, and about), are very similar, differing in only three parameters: the background image url, title, 
+and subtitle, and you are wondering whether we can further refactor this code using Jinja magic. Wonder no more! Turns out, we can create a 
+snippet to include this shared code, and pass values for these parameters from the pages that include this snippet.
 
 So lets create a _page_header.html_ and paste the following code inside it:
 
@@ -630,7 +642,7 @@ So lets create a _page_header.html_ and paste the following code inside it:
 </header>
 ```
 
-Here instead of using hard coded values, we are using variables for the three different parameters, that will be passed 
+Here instead of using hard coded values, we are using values for the three different parameters, that will be passed 
 on to this snippet. For example inside _index.html_, remove the Page Header section of the code
 and add this one `{% include %}` tag to include the code inside _page_header.html_.
 
@@ -652,8 +664,11 @@ and add this one `{% include %}` tag to include the code inside _page_header.htm
 {% endblock %}
 ```
 
+As you see in the above code, we can supply values for specific parameters with `with` tag inside include
+tag, and then later use these values inside the included snippet.
+
 Apply the same change to both _about.html_ and _contact.html_, passing  their relative values to the include tag. After all this hard work,
-visit your pages, and you should see the following result:
+visit your newly created pages, and you should see the following result:
 
 
 ![Index View](imgs/index_view_3.png)
@@ -669,3 +684,6 @@ visit your pages, and you should see the following result:
 
 Finally you now have a pretty looking blog. However, looks are not everything. We need great content as well. 
 In the next part, we are going to implement a way to create and publish posts easily. See you soon!
+
+Source code for this tutorial up to this point can be found 
+[here](https://github.com/gunduzhuseyn/Blog/tree/posts/posts/creating-a-personal-blog-part-2-integrating-a-theme-into-django)
