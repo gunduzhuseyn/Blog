@@ -3,8 +3,8 @@
 Hi, and welcome back. In the last part, 
 [part 2](https://gunduzhuseyn.com/posts/creating-a-personal-blog-part-2-integrating-a-theme-into-django) of our series, 
 I showed you how to download a css theme and integrate it
-to our django project, to make our blog look prettier. However as I said in the previous post, we need great content
-as well as great looks. So we need to be able to create, edit, and publish our posts. 
+to our little django project, to make our blog look prettier. However as I said in the previous post, we need great content
+as well as the great looks. So we need to be able to create, edit, and publish our posts. 
 
 To do so, we need to create database models to represent our posts, and integrate those models with fronted so we can
 filter and show them as needed. If you are not familiar with these concepts, don't worry. To make you get used to the
@@ -114,10 +114,17 @@ class ContactForm(ModelForm):
 ```
 
 So, here we create a Django [form](https://docs.djangoproject.com/en/3.0/topics/forms/), that automatically inherits the
-fields from the Model we just created. We need to exclude the time field, so it will not be filled by the user. In the
-widgets part of the code, we simply add placeholders that will show up if the field is empty. Now we need to use this 
-form in a view, that will serve the html page. Django has a class called `FormView` that handles verifying data, 
-generating errors, and etc. So create a view class by inheriting this class, as shown below.
+fields from the Model we just created. We need to exclude the time field, since it will not be filled by the user. In the
+widgets part of the code, we simply add placeholders that will show up if the field is empty. You can customize your
+form even more if you want to, but I will keep to the essentials here. If you want to do so, feel free to follow the 
+[official guide](https://docs.djangoproject.com/en/3.0/topics/forms/).
+Now we need to use this 
+form in a view which will serve the contact html page. Django has a class called `FormView` that handles verifying data, 
+generating errors, and etc. At this point we are serving our contact page with a simple `TemplateView`, since we did 
+not need any major functionality in the view. However, now to make use of the already implemented functionality, we will use
+a `FormView`. So go ahead create a view class by inheriting this class, in in _blog/views.py_ file as shown below. By the way
+feel free to remove the HomeView class (as well as the url associated with it in _blog/urls.py_ file, and the html file), 
+since we will no longer be needing it.
 
 ```
 #!python
@@ -140,13 +147,13 @@ class ContactFormView(FormView):
 Above we tell Django which html file to serve, alongside with the form that will show up inside that html file. 
 `success_url` parameter determines the url the user will be directed. In our case, Django adds 'success' to the end of 
 the current url, and redirects the user there. And once the form is submitted and is valid, meaning there are no
-errors, then we create a Contact object in our database.
+errors, then we save the input received from the user as a Contact object in our database.
 
-A few things are left to do. First, we need to integrate our form into _contact.html_. And then we should create 
+There are a few things left to do at this point. First, we need to integrate our form into _contact.html_. And then we should create 
 an html page, and a view to handle this page to show the success message, and tie up both these views to urls. 
 
 So lets modify the code inside _contact.html_. We can remove the old hard coded form, and replace it with a more
-dynamic django form. This way, if you ever change the form, by adding new fields (spoiler, we will), then you will not 
+dynamic django form. This way, if you ever change the form, by adding new fields (spoiler again, we will), then you will not 
 need to change a single line from the html page. Go ahead and replace the old form with the new one, by changing the 
 code accordingly:
 
@@ -182,8 +189,8 @@ code accordingly:
 
 Just as a reminder, if things overwhelm you, and you get stuck or confused at any time, feel free to google on these 
 materials to get more comfortable. We simply use a for loop in the above code to retrieve each field of the form, 
-which will be passed by the view to this html. All the syntax and logic can be looked up on the official Django 
-[documentation](https://docs.djangoproject.com/en/2.2/topics/forms/) as well.
+which will be passed by the view to this html. All the syntax and logic can be looked up on the official [Django 
+documentation](https://docs.djangoproject.com/en/3.0/topics/forms/) as well.
 
 Now, lets create an html page called _contact_success.html_ inside the _templates/blog_ folder. 
 You can copy and paste the code from _contact.html_, remove the form part, and change the message inside `<p>` tags.
