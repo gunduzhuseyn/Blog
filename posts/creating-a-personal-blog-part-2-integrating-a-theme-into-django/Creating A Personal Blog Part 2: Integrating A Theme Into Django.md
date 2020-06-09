@@ -683,8 +683,7 @@ visit your newly created pages, and you should see the following result:
 ![Contact View](imgs/contact_view.png)
 
 Finally you now have a pretty looking blog. However, looks are not everything. We need great content as well. 
-In the [next part](https://gunduzhuseyn.com/posts/creating-a-personal-blog-part-2-starting-off)
-, we are going to implement a way to create and publish posts easily. See you soon!
+In the next part, we are going to implement a way to create and publish posts easily. See you soon!
 
 Source code for this tutorial up to this point can be found 
 [here](https://github.com/gunduzhuseyn/Blog/tree/posts/posts/creating-a-personal-blog-part-2-integrating-a-theme-into-django).

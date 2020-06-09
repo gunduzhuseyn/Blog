@@ -178,7 +178,8 @@ You should see the following page:
 ![Django first sight](imgs/django_first_sight.png)
 
 Wonderful. You have successfully installed django, created your initial project, and run it successfully. We will
-continue building our blog in the next part.
+continue building our blog in the 
+[next part](https://gunduzhuseyn.com/posts/creating-a-personal-blog-part-2-starting-off).
 
 Source code for this tutorial up to this point can be found 
 [here](https://github.com/gunduzhuseyn/Blog/tree/posts/posts/creating-a-personal-blog-part-1-setting-up-the-environment).
