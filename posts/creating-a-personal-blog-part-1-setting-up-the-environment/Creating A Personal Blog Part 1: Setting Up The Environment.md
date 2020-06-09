@@ -179,3 +179,6 @@ You should see the following page:
 
 Wonderful. You have successfully installed django, created your initial project, and run it successfully. We will
 continue building our blog in the next part.
+
+Source code for this tutorial up to this point can be found 
+[here](https://github.com/gunduzhuseyn/Blog/tree/posts/posts/creating-a-personal-blog-part-1-setting-up-the-environment).
