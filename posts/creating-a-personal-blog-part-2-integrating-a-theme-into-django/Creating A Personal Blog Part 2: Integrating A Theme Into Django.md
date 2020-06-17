@@ -1,4 +1,4 @@
-# Creating A Personal Blog Part 2: Starting Off
+# Creating A Personal Blog Part 2: Integrating A Theme Into Django
 
 ### Creating A Personal Blog Using Django, Nginx, And Google Cloud
 
