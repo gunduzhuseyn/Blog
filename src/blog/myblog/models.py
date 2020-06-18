@@ -24,7 +24,7 @@ class Category(models.Model):
     title = models.CharField(max_length=50, unique=True, default='')
     slug = models.SlugField(unique=True, blank=True)
     tag_line = models.CharField(max_length=300, null=True, default='')
-    header_image = models.ImageField(upload_to=category_header_image_path, null=True)
+    header_image = models.ImageField(upload_to=category_header_image_path, null=True, max_length=500)
 
     def __str__(self):
         return self.title
@@ -38,7 +38,7 @@ class Post(models.Model):
     date_created = models.DateField(default=datetime.date.today)
     date_published = models.DateField(default=datetime.date.today)
     is_published = models.BooleanField(default=False)
-    header_image = models.ImageField(upload_to=post_header_image_path, null=True)
+    header_image = models.ImageField(upload_to=post_header_image_path, null=True, max_length=500)
     categories = models.ManyToManyField(Category)
 
     def __str__(self):
