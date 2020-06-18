@@ -36,7 +36,7 @@
                         {% endfor %}
                     </p>
                     <div>
-                        {{ post.formatted_markdown|safe|truncatechars:"200" }}
+                        {{ post.formatted_markdown|safe|truncatewords_html:"50" }}
                     </div>
                     <p class="post-meta">
                         <a href="{{ post.get_absolute_url }}">See In Detail</a>
