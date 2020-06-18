@@ -1,2 +1,0 @@
-django==2.1.7
-django-simple-captcha==0.5.11
