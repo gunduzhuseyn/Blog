@@ -13,15 +13,19 @@
             <form method="post">
                 {% csrf_token %}
                 {% for field in form %}
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label>{{ field.label }}</label>
-                            {{ field }}
-                            {% for error in field.errors %}
-                                <p class="help-block text-danger">{{ error|escape }}</p>
-                            {% endfor %}
+                    {% if field.label == 'Captcha' %}
+                        {{ field }}
+                    {% else %}
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label>{{ field.label }}</label>
+                                {{ field }}
+                                {% for error in field.errors %}
+                                    <p class="help-block text-danger">{{ error|escape }}</p>
+                                {% endfor %}
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
                 <br>
                 <div id="success"></div>

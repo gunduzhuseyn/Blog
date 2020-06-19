@@ -8,7 +8,7 @@ urlpatterns = [
     re_path('^posts/(?P<slug>[-\w]+)$', PostDetailView.as_view(), name='post_detail_url'),
     re_path('^category/(?P<slug>[-\w]+)/$', HomeView.as_view(), name='home_with_category_url'),
     path('contact/', ContactFormView.as_view(), name='contact_url'),
-    path('contact/success/', TemplateView.as_view(template_name='myblog/contact_success.html.'),
+    path('contact/success/', TemplateView.as_view(template_name='myblog/contact_success.html'),
          name='contact_success_url'),
     path('400.html/', TemplateView.as_view(template_name='400.html'), name='400_error_page'),
     path('403.html/', TemplateView.as_view(template_name='403.html'), name='403_error_page'),
