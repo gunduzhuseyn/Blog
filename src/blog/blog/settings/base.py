@@ -60,6 +60,7 @@ CSP_DEFAULT_SRC = ("'self'",
                    "https://disqus.com/embed/comments/",
                    "https://disqus.com/home/preload/",
                    "https://links.services.disqus.com/api/",
+                   "https://www.google.com/recaptcha/",
                    )
 
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'",
@@ -74,6 +75,8 @@ CSP_SCRIPT_SRC = ("'self'",
                   "https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/",
                   "https://gunduzhuseyn.disqus.com/embed.js",
                   "https://c.disquscdn.com/next/embed/",
+                  "https://www.google.com/recaptcha/",
+                  "https://www.gstatic.com/recaptcha/",
                   )
 CSP_IMG_SRC = ("'self'",
                "https://referrer.disqus.com/juggler/",
@@ -148,6 +151,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Markdownx Settings
 MARKDOWNX_IMAGE_MAX_SIZE = {'size': (900, 900), 'quality': 100}
 
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
@@ -163,3 +167,8 @@ MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
         'linenums': True
     },
 }
+
+# Google ReCAPTCHA Settings
+RECAPTCHA_REQUIRED_SCORE = 0.65
+
+RECAPTCHA_PUBLIC_KEY = '6Le7ZqYZAAAAANCx3Sf1IXqBOeGlPIxw1TvrMF4K'
