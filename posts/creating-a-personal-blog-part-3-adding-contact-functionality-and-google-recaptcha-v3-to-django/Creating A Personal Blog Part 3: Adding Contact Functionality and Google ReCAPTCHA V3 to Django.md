@@ -201,6 +201,8 @@ Now there are a few things that are new here. Just as a reminder, if things over
 confused at any time, feel free to google on these 
 materials to get more comfortable. It is nothing a big deal though. We simply use a for loop in the above code to 
 retrieve each field of the form, that is passed by the view, and show its label, and its errors if there are any. 
+Another important detail is that we need to add the `{% csrf_token %}` to all our forms to prevent [cross site 
+request forgery attack](https://docs.djangoproject.com/en/3.0/ref/csrf/).
 All the syntax and logic can be looked up on the official 
 [Django documentation](https://docs.djangoproject.com/en/3.0/topics/forms/) as well.
 
@@ -388,6 +390,36 @@ The app we just downloaded and added to our project, and the Django framework wi
 yourself another rewarding message :)
 
 ![A Nice Message](imgs/re_captcha_2.png)
+
+As you can see our contact page works nicely with Google ReCAPTCHA. However one trivial issue is that we have an
+additional html divider for the captcha field. If you want to fix this, you can simply go to the _contact.html_ and 
+add an if else statement, to put the captcha field without the `<div>` tags.
+
+```
+#!html
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        {% if field.label == 'Captcha' %}
+            {{ field }}
+        {% else %}
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                    <label>{{ field.label }}</label>
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <p class="help-block text-danger">{{ error|escape }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+    </div>
+</form>
+```
 
 We are done. With this last part, I just wanted to show you why we went through all this hassle before. 
 As you hopefully see by now, once you build your page in a modular way, then modifying it becomes real
