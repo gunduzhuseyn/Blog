@@ -10,7 +10,7 @@ local/
 media/
 
 #static files collected by the collectstatic
-/src/blog/static/
+src/blog/static/
 
 #environment files
 env/
