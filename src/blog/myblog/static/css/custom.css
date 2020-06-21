@@ -3,6 +3,23 @@
     padding: 5px 24px 5px 5px;
 }
 
+.crl{
+    width: 100%;
+    height: 100%;
+}
+
+#about_overlay{
+    opacity: 0.85;
+}
+
+.carousel-item {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 50px;
+    background: no-repeat center center scroll;
+    background-size: cover;
+    position: relative;
+}
 
 /*Making code block responsive*/
 .codehilitetable{
