@@ -12,6 +12,9 @@ media/
 #environment files
 env/
 
+# static files collected by collectstatic
+src/blog/static/
+
 #Django related files
 __pycache__/
 db.sqlite3
