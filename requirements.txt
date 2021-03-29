@@ -5,7 +5,7 @@ pytz==2019.3
 django-recaptcha==2.0.6
 django-markdownx==3.0.1
 Markdown==3.2.1
-Pygments==2.6.1
+Pygments==2.7.4
 python-markdown-math==0.6
 requests==2.23.0
 six==1.14.0
